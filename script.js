@@ -21,15 +21,15 @@ function calculateAge(event) {
   if (!birthDay || !birthMonth || !birthYear) {
     if (!birthDay) {
       document.getElementById("day-input").style.borderColor = "red";
-      dayError.innerHTML = "Day input required";
+      dayError.innerHTML = "This field is required";
     }
     if (!birthMonth) {
       document.getElementById("month-input").style.borderColor = "red";
-      monthError.innerHTML = "Month input required";
+      monthError.innerHTML = "This field is required";
     }
     if (!birthYear) {
       document.getElementById("year-input").style.borderColor = "red";
-      yearError.innerHTML = "Year input required";
+      yearError.innerHTML = "This field is required";
     }
     return; 
   }
@@ -40,16 +40,13 @@ function calculateAge(event) {
   birthYear = parseInt(birthYear);
 
   // Check if input values are valid numbers
-    if (isNaN(birthDay) || birthDay < 1 || birthDay > 31) {
+    if (isNaN(birthDay)) {
       document.getElementById("day-input").style.borderColor = "red";
       dayError.innerHTML = "Invalid day";
-    }
-
-    else if (isNaN(birthMonth) || birthMonth < 1 || birthMonth > 12) {
+    }else if (isNaN(birthMonth)) {
       document.getElementById("month-input").style.borderColor = "red";
       monthError.innerHTML = "Invalid month";
     }
-
     else if (isNaN(birthYear)) {
       document.getElementById("year-input").style.borderColor = "red";
       yearError.innerHTML = "Invalid year";
@@ -61,16 +58,13 @@ function calculateAge(event) {
   let currentYear = new Date().getFullYear();
   if (birthYear > currentYear) {
     document.getElementById("year-input").style.borderColor = "red";
-    yearError.innerHTML = "Invalid birth year";
+    yearError.innerHTML = "Invalid year";
     return;
   }
 
   // Check if birthdate is in the future
   let currentDate = new Date();
-  if (
-    birthYear > currentDate.getFullYear() ||
-    (birthYear === currentDate.getFullYear() &&
-      birthMonth - 1 > currentDate.getMonth()) ||
+  if ( birthYear > currentDate.getFullYear() || (birthYear === currentDate.getFullYear() && birthMonth - 1 > currentDate.getMonth()) ||
     (birthYear === currentDate.getFullYear() &&
       birthMonth - 1 === currentDate.getMonth() &&
       birthDay > currentDate.getDate())
@@ -90,9 +84,7 @@ function calculateAge(event) {
   let monthsOld = (currentDate.getMonth() + 12) - userBirthDate.getMonth(); 
 
   // Check if the birthday has occurred this year
-  if (
-    currentDate.getMonth() < userBirthDate.getMonth() ||
-    (currentDate.getMonth() === userBirthDate.getMonth() &&
+  if (currentDate.getMonth() < userBirthDate.getMonth() || (currentDate.getMonth() === userBirthDate.getMonth() &&
       currentDate.getDate() < userBirthDate.getDate())
   ) {
     yearsOld--;
@@ -103,11 +95,7 @@ function calculateAge(event) {
   if (daysOld < 0) {
     monthsOld--; 
     // Calculate the remaining days in the last month
-    let lastMonthDays = new Date(
-      currentDate.getFullYear(),
-      currentDate.getMonth(),
-      0
-    ).getDate();
+    let lastMonthDays = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
     daysOld += lastMonthDays;
   }
 
@@ -116,6 +104,5 @@ function calculateAge(event) {
   document.getElementById("months-result").textContent = monthsOld;
   document.getElementById("day-result").textContent = daysOld;
 }
-
 
 document.getElementById('btn').addEventListener("click", calculateAge);
