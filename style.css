@@ -1,0 +1,137 @@
+@font-face {
+    font-family: ResultsFont;
+    src: url('./fonts/Poppins-ExtraBoldItalic.ttf');
+}
+
+@font-face {
+    font-family: LabelsFont;
+    src: url('./fonts/Poppins-Bold.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(219, 218, 218, 0.788);
+}
+
+.calculator {
+    width: 550px;
+    height: 400px;
+    padding: 20px;
+    border-bottom-right-radius: 35%;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+    background: white;
+    /* border: 1px solid black; */
+}
+
+.inputs {
+    display: flex;
+    padding-bottom: 30px;
+    position: relative;
+}
+
+.inputs:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 84%;
+    border-bottom: 2px solid rgba(76, 76, 76, 0.244);
+}
+
+.inputs button {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -30px;
+    right: 25px;
+    background: rgb(126, 40, 192);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+}
+
+.inputs div {
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+}
+
+.inputs label {
+    font-family: LabelsFont;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+}
+
+.inputs p {
+    margin-top: 4px;
+    font-family: LabelsFont;
+    color: rgba(242, 19, 19, 0.696);
+    font-size: 10px;
+}
+
+.inputs input {
+    width: 100px;
+    height: 50px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 2px solid rgba(82, 82, 82, 0.304);
+    color: rgb(0, 0, 0);
+    font-family: LabelsFont;
+    font-size: 18px;
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+}
+
+.result h1 {
+    font-size: 70px;
+    margin-bottom: -30px;
+    font-style: italic;
+    font-weight: bold;
+    font-family: ResultsFont;
+}
+
+.result h1 span {
+    color: blueviolet;
+}
+
+@media screen and (max-width:600px) {
+    .calculator{
+        width: 80%;
+        height: 300px;
+    }
+   
+    .inputs input{
+        width: 60px;
+        height: 45px;
+    }
+
+    .inputs button{
+     width: 45px;
+     height: 45px;
+     bottom: -21px;   
+    }
+    
+    .result h1{
+        font-size: 32px;
+        margin-bottom: 2px;
+    }
+}
